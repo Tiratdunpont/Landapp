@@ -207,9 +207,9 @@ class UpdateController extends Controller
                 ->update(['RegisterNumber' => $valors[5]]);
         }
         if (isset($valors[6])) {
-            \DB::table('balances as b')
-                ->where ('id', $bid)
-                ->update(['RentStartsFrom' => $valors[6]]);
+            \DB::table('details as d')
+                ->where ('id', $did)
+                ->update(['RentedArea' => $valors[6]]);
         }
         if (isset($valors[7]) && $r == 0) {
             \DB::table('lands as l')
