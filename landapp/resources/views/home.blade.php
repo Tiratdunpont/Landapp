@@ -8,39 +8,46 @@
         @if($errors->any())
             <h4>{{$errors->first()}}</h4>
         @endif
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Unique Land Number</th>
-                <th>Company Name</th>
-                <th>Location Land</th>
-                <th>Land Area</th>
-                <th>Soil Productivity Score</th>
-                <th>Personal Number</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($maintables as $maintable)
+        <form method="POST" action="selected">
+            {{ csrf_field() }}
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>{{ $maintable->UniqueLandNumber }}</td>
-                    <td>{{ $maintable->CompanyName }}</td>
-                    <td>{{ $maintable->LocationLand }}</td>
-                    <td>{{ $maintable->LandArea }}</td>
-                    <td>{{ $maintable->SoilProductivityScore }}</td>
-                    <td>{{ $maintable->PersonalNumber }}</td>
-                    <td>{{ $maintable->Name }}</td>
-                    <td>{{ $maintable->Surname }}</td>
-                    <td><a href="details?id={{ $maintable->id }}" class="btn btn-info" role="button">View</a></td>
-                    <td><a href="update?id={{ $maintable->id }}" class="btn btn-info" role="button">Update</a></td>
+                    <th></th>
+                    <th>Unique Land Number</th>
+                    <th>Company Name</th>
+                    <th>Location Land</th>
+                    <th>Land Area</th>
+                    <th>Soil Productivity Score</th>
+                    <th>Personal Number</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                @foreach($maintables as $maintable)
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="to_select[]" value="{{ $maintable->id }}"/>
+                        </td>
+                        <td>{{ $maintable->UniqueLandNumber }}</td>
+                        <td>{{ $maintable->CompanyName }}</td>
+                        <td>{{ $maintable->LocationLand }}</td>
+                        <td>{{ $maintable->LandArea }}</td>
+                        <td>{{ $maintable->SoilProductivityScore }}</td>
+                        <td>{{ $maintable->PersonalNumber }}</td>
+                        <td>{{ $maintable->Name }}</td>
+                        <td>{{ $maintable->Surname }}</td>
+                        <td><a href="details?id={{ $maintable->id }}" class="btn btn-info" role="button">View</a></td>
+                        <td><a href="update?id={{ $maintable->id }}" class="btn btn-info" role="button">Update</a></td>
+                    </tr>
+                @endforeach
+                <button type="submit" class="btn btn-link">Select checked</button>
+                </tbody>
+            </table>
+        </form>
         {{ $maintables->links() }}
     </div>
 
@@ -359,7 +366,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="CompanyName">Company Name:</label>
+                            <label for="* CompanyName">* Company Name:</label>
                             <input class="form-control" id="CompanyName" name="CompanyName">
                             @if ($errors->has('CompanyName'))
                                 <span class="help-block">

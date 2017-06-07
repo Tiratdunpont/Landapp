@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('Search', 'SearchController@search');
 Route::get('update', 'HomeController@updateredir');
 Route::post('Updatedb', 'UpdateController@update');
+Route::post('selected', 'HomeController@selected');
 Route::post('InsertAll', 'InsertAllController@store');
 Route::get('details', 'HomeController@details');
 Route::get('delete', 'HomeController@delete');

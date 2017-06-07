@@ -18,7 +18,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Status">* Status:</label>
+                            <label for="Status">Status:</label>
                             <input class="form-control" id="Status" name="Status">
                             @if ($errors->has('Status'))
                                 <span class="help-block">
@@ -81,7 +81,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PersonalNumber">* Personal number:</label>
+                            <label for="PersonalNumber">Personal number:</label>
                             <input class="form-control" id="PersonalNumber" name="PersonalNumber">
                             @if ($errors->has('PersonalNumber'))
                                 <span class="help-block">
@@ -164,7 +164,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="UniqueLandNumber">* Unique land number:</label>
+                            <label for="UniqueLandNumber">Unique land number:</label>
                             <input class="form-control" id="UniqueLandNumber" name="UniqueLandNumber">
                             @if ($errors->has('UniqueLandNumber'))
                                 <span class="help-block">
@@ -202,7 +202,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="LandArea">* Land area:</label>
+                            <label for="LandArea">Land area:</label>
                             <input class="form-control" id="LandArea" name="LandArea">
                             @if ($errors->has('LandArea'))
                                 <span class="help-block">
