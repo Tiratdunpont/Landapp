@@ -238,7 +238,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="RentStartsFrom">Rent starts from:</label>
+                            <label for="RentStartsFrom">Price starting date (MM-DD):</label>
                             <input class="form-control" id="RentStartsFrom" name="RentStartsFrom">
                             @if ($errors->has('RentStartsFrom'))
                                 <span class="help-block">
@@ -247,7 +247,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="RentEndsIn">Rent ends in:</label>
+                            <label for="RentEndsIn">Price ending date (MM-DD):</label>
                             <input class="form-control" id="RentEndsIn" name="RentEndsIn">
                             @if ($errors->has('RentEndsIn'))
                                 <span class="help-block">
@@ -256,7 +256,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="NewPriceStartingDate">New price starting date:</label>
+                            <label for="NewPriceStartingDate">2nd price starting date (MM-DD):</label>
                             <input class="form-control" id="NewPriceStartingDate" name="NewPriceStartingDate">
                             @if ($errors->has('NewPriceStartingDate'))
                                 <span class="help-block">
@@ -265,7 +265,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="NewPriceTillDate">New price until date:</label>
+                            <label for="NewPriceTillDate">New price ending date (MM-DD):</label>
                             <input class="form-control" id="NewPriceTillDate" name="NewPriceTillDate">
                             @if ($errors->has('NewPriceTillDate'))
                                 <span class="help-block">

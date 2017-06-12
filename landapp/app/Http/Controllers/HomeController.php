@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Balance;
 use Illuminate\Support\Facades\Input;
+
 
 class HomeController extends Controller
 {
@@ -211,11 +211,11 @@ class HomeController extends Controller
                     'e.PersonalNumber as PersonalNumber',
                     'e.Name as Name',
                     'e.Surname as Surname')
-                    ->whereIn('b.id', $id_checked)
+                ->whereIn('b.id', $id_checked)
                 ->paginate(25);
             return view('home', compact('maintables'));
-        }
-        else {
+        } else {
+            $id = request()->HiddenTraitor;
             $maintables = \DB::table('lands as l')
                 ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
                 ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
@@ -229,8 +229,38 @@ class HomeController extends Controller
                     'e.PersonalNumber as PersonalNumber',
                     'e.Name as Name',
                     'e.Surname as Surname')
-                ->paginate(25);
-            return view('home', compact('maintables', 'selected'));
-        }
+                ->whereIn('b.id', $id)
+                ->get();
+            \Excel::create('Test1', function ($excel) use ($id){
+
+                // Set the spreadsheet title, creator, and description
+                $excel->sheet('Test1', function ($sheet) use ($id){
+                $maintables = \DB::table('lands as l')
+                    ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                    ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
+                    ->select('l.UniqueLandNumber as UniqueLandNumber',
+                        'b.id as id',
+                        'l.Status as Status',
+                        'l.CompanyName as CompanyName',
+                        'l.LocationLand as LocationLand',
+                        'l.LandArea as LandArea',
+                        'l.SoilProductivityScore as SoilProductivityScore',
+                        'e.PersonalNumber as PersonalNumber',
+                        'e.Name as Name',
+                        'e.Surname as Surname')
+                    ->whereIn('b.id', $id)
+                    ->get();
+                $data =array();
+                foreach($maintables as $maintable){
+                    $data[] =(array)$maintable;
+                }
+                $sheet->fromArray($data);
+
+            });
+            })->export('xls');
+
+
+        return view('home', compact('maintables', 'selected'));
     }
+}
 }

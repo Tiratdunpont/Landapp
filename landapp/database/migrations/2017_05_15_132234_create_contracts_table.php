@@ -17,10 +17,10 @@ class CreateContractsTable extends Migration
             $table->increments('id');
             $table->string('UniqueLandNumber');
             $table->bigInteger('PersonalNumber');
-            $table->date('RentStartsFrom')->nullable();
-            $table->date('RentEndsIn')->nullable();
-            $table->date('NewPriceStartingDate')->nullable();
-            $table->date('NewPriceTillDate')->nullable();
+            $table->string('RentStartsFrom')->nullable();
+            $table->string('NewPriceStartingDate')->nullable();
+            $table->string('NewPriceTillDate')->nullable();
+            $table->string('RentEndsIn')->nullable();
             $table->string('BankAccount')->nullable();
             $table->string('ContractedBy')->nullable();
             $table->string('Subrenter')->nullable();
