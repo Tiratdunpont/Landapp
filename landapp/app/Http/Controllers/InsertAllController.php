@@ -59,6 +59,17 @@ class InsertAllController extends Controller
         }
         return 0;
     }
+    public function checkyr($yr, $e, $l){
+        $maintables = \DB::table('balances')
+            ->select('UniqueLandNumber', 'PersonalNumber')
+            ->get();
+        foreach ($maintables as $maintable) {
+            if ($maintable->PersonalNumber == $e and $maintable->UniqueLandNumber == $l and $maintable->Year == $yr) {
+                return 1;
+            }
+        }
+        return 0;
+    }
 
     public function store()
     {
@@ -93,14 +104,14 @@ class InsertAllController extends Controller
             'BankAccount',
             'ContractedBy',
             'Type',
-            'PricePerHectare',
-            'PayPerYearUntilMonth',
+            'fstPricePerHectare',
+            'sndPricePerHectare',
             'ContractSignDate',
             'ChangesDate',
             'ContractChanges',
             'Interval',
             'ContractNumber',
-            'Year',
+            'Year' => 'required',
             'Town',
             'Street',
             'House',
@@ -112,6 +123,7 @@ class InsertAllController extends Controller
         $c = request('CompanyName');
         $e = request('PersonalNumber');
         $l = request('UniqueLandNumber');
+        $yr = request('Year');
         $cb = $this->check($c, 2);
         $eb = $this->check($e, 3);
         $lb = $this->check($l, 4);
@@ -152,8 +164,8 @@ class InsertAllController extends Controller
             $contract->ContractedBy = request('ContractedBy');
             $contract->Subrenter = request('Subrenter');
             $contract->Type = request('Type');
-            $contract->PricePerHectare = request('PricePerHectare');
-            $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+            $contract->fstPricePerHectare = request('fstPricePerHectare');
+            $contract->sndPricePerHectare = request('sndPricePerHectare');
             $contract->ContractSignDate = request('ContractSignDate');
             $contract->ChangesDate = request('ChangesDate');
             $contract->ContractChanges = request('ContractChanges');
@@ -164,8 +176,6 @@ class InsertAllController extends Controller
             $balance = new Balance();
             $balance->UniqueLandNumber = request('UniqueLandNumber');
             $balance->PersonalNumber = request('PersonalNumber');
-            $balance->RentStartsFrom = request('RentStartsFrom');
-            $balance->RentEndsIn = request('RentEndsIn');
             $balance->Year = request('Year');
             $balance->save();
 
@@ -223,8 +233,8 @@ class InsertAllController extends Controller
             $contract->ContractedBy = request('ContractedBy');
             $contract->Subrenter = request('Subrenter');
             $contract->Type = request('Type');
-            $contract->PricePerHectare = request('PricePerHectare');
-            $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+            $contract->fstPricePerHectare = request('fstPricePerHectare');
+            $contract->sndPricePerHectare = request('sndPricePerHectare');
             $contract->ContractSignDate = request('ContractSignDate');
             $contract->ChangesDate = request('ChangesDate');
             $contract->ContractChanges = request('ContractChanges');
@@ -235,8 +245,6 @@ class InsertAllController extends Controller
             $balance = new Balance();
             $balance->UniqueLandNumber = request('UniqueLandNumber');
             $balance->PersonalNumber = request('PersonalNumber');
-            $balance->RentStartsFrom = request('RentStartsFrom');
-            $balance->RentEndsIn = request('RentEndsIn');
             $balance->Year = request('Year');
             $balance->save();
 
@@ -249,7 +257,13 @@ class InsertAllController extends Controller
         else if ($cb == 1 && $lb == 1 && $eb == 1) {
             $t = $this->checkT2($e, $l);
             if ($t == 1) {
-                return Redirect::back()->withErrors(['Already used Personal Number, Unique Land Number and Company Name', '']);
+                $k = $this->checkyr($yr, $e, $l);
+                if ($k == 0) {
+                    return Redirect::back()->withErrors(['Already used Personal Number, Unique Land Number and Company Name', '']);
+                }
+                else{
+
+                }
             }
             else {
                 $details = new Details();
@@ -276,8 +290,8 @@ class InsertAllController extends Controller
                 $contract->ContractedBy = request('ContractedBy');
                 $contract->Subrenter = request('Subrenter');
                 $contract->Type = request('Type');
-                $contract->PricePerHectare = request('PricePerHectare');
-                $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+                $contract->fstPricePerHectare = request('fstPricePerHectare');
+                $contract->sndPricePerHectare = request('sndPricePerHectare');
                 $contract->ContractSignDate = request('ContractSignDate');
                 $contract->ChangesDate = request('ChangesDate');
                 $contract->ContractChanges = request('ContractChanges');
@@ -288,8 +302,6 @@ class InsertAllController extends Controller
                 $balance = new Balance();
                 $balance->UniqueLandNumber = request('UniqueLandNumber');
                 $balance->PersonalNumber = request('PersonalNumber');
-                $balance->RentStartsFrom = request('RentStartsFrom');
-                $balance->RentEndsIn = request('RentEndsIn');
                 $balance->Year = request('Year');
                 $balance->save();
                 return redirect('home');
@@ -333,8 +345,8 @@ class InsertAllController extends Controller
             $contract->ContractedBy = request('ContractedBy');
             $contract->Subrenter = request('Subrenter');
             $contract->Type = request('Type');
-            $contract->PricePerHectare = request('PricePerHectare');
-            $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+            $contract->fstPricePerHectare = request('fstPricePerHectare');
+            $contract->sndPricePerHectare = request('sndPricePerHectare');
             $contract->ContractSignDate = request('ContractSignDate');
             $contract->ChangesDate = request('ChangesDate');
             $contract->ContractChanges = request('ContractChanges');
@@ -345,8 +357,6 @@ class InsertAllController extends Controller
             $balance = new Balance();
             $balance->UniqueLandNumber = request('UniqueLandNumber');
             $balance->PersonalNumber = request('PersonalNumber');
-            $balance->RentStartsFrom = request('RentStartsFrom');
-            $balance->RentEndsIn = request('RentEndsIn');
             $balance->Year = request('Year');
             $balance->save();
 
@@ -410,8 +420,8 @@ class InsertAllController extends Controller
             $contract->ContractedBy = request('ContractedBy');
             $contract->Subrenter = request('Subrenter');
             $contract->Type = request('Type');
-            $contract->PricePerHectare = request('PricePerHectare');
-            $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+            $contract->fstPricePerHectare = request('fstPricePerHectare');
+            $contract->sndPricePerHectare = request('sndPricePerHectare');
             $contract->ContractSignDate = request('ContractSignDate');
             $contract->ChangesDate = request('ChangesDate');
             $contract->ContractChanges = request('ContractChanges');
@@ -422,8 +432,6 @@ class InsertAllController extends Controller
             $balance = new Balance();
             $balance->UniqueLandNumber = request('UniqueLandNumber');
             $balance->PersonalNumber = request('PersonalNumber');
-            $balance->RentStartsFrom = request('RentStartsFrom');
-            $balance->RentEndsIn = request('RentEndsIn');
             $balance->Year = request('Year');
             $balance->save();
 

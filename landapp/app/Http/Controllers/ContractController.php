@@ -20,8 +20,8 @@ class ContractController extends Controller
             'ContractedBy',
             'Subrenter',
             'Type',
-            'PricePerHectare',
-            'PayPerYearUntilMonth',
+            'fstPricePerHectare',
+            'sndPricePerHectare',
             'ContractSignDate',
             'ChangesDate',
             'ContractChanges',
@@ -40,8 +40,8 @@ class ContractController extends Controller
         $contract->ContractedBy = request('ContractedBy');
         $contract->Subrenter = request('Subrenter');
         $contract->Type = request('Type');
-        $contract->PricePerHectare = request('PricePerHectare');
-        $contract->PayPerYearUntilMonth = request('PayPerYearUntilMonth');
+        $contract->fstPricePerHectare = request('fstPricePerHectare');
+        $contract->sndPricePerHectare = request('sndPricePerHectare');
         $contract->ContractSignDate = request('ContractSignDate');
         $contract->ChangesDate = request('ChangesDate');
         $contract->ContractChanges = request('ContractChanges');

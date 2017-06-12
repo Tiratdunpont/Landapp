@@ -72,8 +72,8 @@ class UpdateController extends Controller
             'BankAccount',
             'ContractedBy',
             'Type',
-            'PricePerHectare',
-            'PayPerYearUntilMonth',
+            'fstPricePerHectare',
+            'sndPricePerHectare',
             'ContractSignDate',
             'ChangesDate',
             'ContractChanges',
@@ -137,8 +137,8 @@ class UpdateController extends Controller
             '25' => request('BankAccount'),
             '26' => request('ContractedBy'),
             '27' => request('Type'),
-            '28' => request('PricePerHectare'),
-            '29' => request('PayPerYearUntilMonth'),
+            '28' => request('fstPricePerHectare'),
+            '29' => request('sndPricePerHectare'),
             '30' => request('ContractSignDate'),
             '31' => request('ChangesDate'),
             '32' => request('ContractChanges'),
@@ -318,16 +318,10 @@ class UpdateController extends Controller
             \DB::table('contracts as c')
                 ->where ('id', $conid)
                 ->update(['RentStartsFrom' => $valors[21]]);
-            \DB::table('balances as b')
-                ->where ('id', $bid)
-                ->update(['RentStartsFrom' => $valors[21]]);
         }
         if (isset($valors[22])) {
             \DB::table('contracts as c')
                 ->where ('id', $conid)
-                ->update(['RentEndsIn' => $valors[22]]);
-            \DB::table('balances as b')
-                ->where ('id', $bid)
                 ->update(['RentEndsIn' => $valors[22]]);
         }
         if (isset($valors[23])) {
@@ -358,11 +352,11 @@ class UpdateController extends Controller
         if (isset($valors[28])) {
             \DB::table('contracts as c')
                 ->where ('id', $conid)
-                ->update(['PricePerHectare' => $valors[28]]);        }
+                ->update(['fstPricePerHectare' => $valors[28]]);        }
         if (isset($valors[29])) {
             \DB::table('contracts as c')
                 ->where ('id', $conid)
-                ->update(['PayPerYearUntilMonth' => $valors[29]]);
+                ->update(['sndPricePerHectare' => $valors[29]]);
         }
         if (isset($valors[30])) {
             \DB::table('contracts as c')

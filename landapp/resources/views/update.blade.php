@@ -294,20 +294,20 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PricePerHectare">Price per hectare:</label>
-                            <input class="form-control" id="PricePerHectare" name="PricePerHectare">
-                            @if ($errors->has('PricePerHectare'))
+                            <label for="fstPricePerHectare">First price per hectare:</label>
+                            <input class="form-control" id="fstPricePerHectare" name="fstPricePerHectare">
+                            @if ($errors->has('fstPricePerHectare'))
                                 <span class="help-block">
-                        <strong>{{ $errors->first('PricePerHectare') }}</strong>
+                        <strong>{{ $errors->first('fstPricePerHectare') }}</strong>
                     </span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PayPerYearUntilMonth">Pay per year until (MM-DD):</label>
-                            <input class="form-control" id="PayPerYearUntilMonth" name="PayPerYearUntilMonth">
-                            @if ($errors->has('PayPerYearUntilMonth'))
+                            <label for="sndPricePerHectare">Second price per hectare:</label>
+                            <input class="form-control" id="sndPricePerHectare" name="sndPricePerHectare">
+                            @if ($errors->has('sndPricePerHectare'))
                                 <span class="help-block">
-                        <strong>{{ $errors->first('PayPerYearUntilMonth') }}</strong>
+                        <strong>{{ $errors->first('sndPricePerHectare') }}</strong>
                     </span>
                             @endif
                         </div>
@@ -362,6 +362,15 @@
                             @if ($errors->has('OwnedDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('OwnedDate') }}</strong>
+                    </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Year">Year:</label>
+                            <input class="form-control" id="Year" name="Year">
+                            @if ($errors->has('Year'))
+                                <span class="help-block">
+                        <strong>{{ $errors->first('Year') }}</strong>
                     </span>
                             @endif
                         </div>

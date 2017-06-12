@@ -139,25 +139,25 @@
                     @endforeach
                 </tr>
                 <tr>
-                    <th>Rent Starts From</th>
+                    <th>Price starting date (MM-DD):</th>
                     @foreach($details as $detail)
                         <td>{{ $detail->RentStartsFrom }}</td>
                     @endforeach
                 </tr>
                 <tr>
-                    <th>Rent Ends In</th>
+                    <th>Price ending date (MM-DD):</th>
                     @foreach($details as $detail)
                         <td>{{ $detail->RentEndsIn }}</td>
                     @endforeach
                 </tr>
                 <tr>
-                    <th>New Price Starting Date</th>
+                    <th>2nd price starting date (MM-DD):</th>
                     @foreach($details as $detail)
                         <td>{{ $detail->NewPriceStartingDate }}</td>
                     @endforeach
                 </tr>
                 <tr>
-                    <th>New Price Until Date</th>
+                    <th>2nd price until date (MM-DD):</th>
                     @foreach($details as $detail)
                         <td>{{ $detail->NewPriceTillDate }}</td>
                     @endforeach
@@ -175,25 +175,32 @@
                     @endforeach
                 </tr>
                 <tr>
-                    <th>Price Per Hectare</th>
+                    <th>First Price Per Hectare</th>
                     @foreach($details as $detail)
-                        <td>{{ $detail->PricePerHectare }}</td>
+                        <td>{{ $detail->fstPricePerHectare }}</td>
                     @endforeach
                 </tr>
                 <tr>
-                    <th>Pay Per Year Until (MM-DD)</th>
+                    <th>Second Price Per Hectare</th>
                     @foreach($details as $detail)
-                        <td>{{ $detail->PayPerYearUntilMonth }}</td>
+                        <td>{{ $detail->sndPricePerHectare }}</td>
                     @endforeach
                 </tr>
                 <tr>
-                    <th>Total Payment Per Hectare</th>
+                    <th>First Total Payment Per Hectare</th>
                     <td> {{$price}} </td>
                 </tr>
                 <tr>
-                    <th>Total Payment Per Year</th>
-
+                    <th>Total Payment Per First Period</th>
                     <td> {{$pay}} </td>
+                </tr>
+                <tr>
+                    <th>Second Total Payment Per Hectare</th>
+                    <td> {{$price2}} </td>
+                </tr>
+                <tr>
+                    <th>Total Payment Per Second Period</th>
+                    <td> {{$pay2}} </td>
                 </tr>
                 <tr>
                     <th>Contract Sign Date</th>

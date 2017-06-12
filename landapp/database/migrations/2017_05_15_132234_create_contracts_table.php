@@ -25,8 +25,8 @@ class CreateContractsTable extends Migration
             $table->string('ContractedBy')->nullable();
             $table->string('Subrenter')->nullable();
             $table->string('Type')->nullable();
-            $table->double('PricePerHectare',6,2)->nullable();
-            $table->string('PayPerYearUntilMonth')->nullable();
+            $table->double('fstPricePerHectare',6,2)->nullable();
+            $table->double('sndPricePerHectare',6,2)->nullable();
             $table->date('ContractSignDate')->nullable();
             $table->date('ChangesDate')->nullable();
             $table->string('ContractChanges')->nullable();

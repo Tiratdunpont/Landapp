@@ -17,8 +17,8 @@ class CreateBalancesTable extends Migration
             $table->increments('id');
             $table->string('UniqueLandNumber');
             $table->bigInteger('PersonalNumber');
-            $table->date('RentStartsFrom')->nullable();
-            $table->date('RentEndsIn')->nullable();
+            $table->double('fstPrice',11, 2)->nullable();
+            $table->double('sndPrice',11, 2)->nullable();
             $table->integer('Year')->nullable();
             $table->foreign('UniqueLandNumber')
                 ->references('UniqueLandNumber')->on('lands')
