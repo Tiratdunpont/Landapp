@@ -7,274 +7,184 @@
                 <tbody>
                 <tr>
                     <th>Unique Land Number</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->UniqueLandNumber }}</td>
-                    @endforeach
+                    <td>{{ $details->UniqueLandNumber }}</td>
                 </tr>
                 <tr>
                     <th>Land Area</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->LandArea }}</td>
-                    @endforeach
+                    <td>{{ $details->LandArea }}</td>
                 </tr>
                 <tr>
                     <th>Status</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Status }}</td>
-                    @endforeach
+                    <td>{{ $details->Status }}</td>
                 </tr>
                 <tr>
                     <th>Soil Productivity Score</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->SoilProductivityScore }}</td>
-                    @endforeach
+                    <td>{{ $details->SoilProductivityScore }}</td>
                 </tr>
                 <tr>
                     <th>Registered In RC</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->RegisteredInRC }}</td>
-                    @endforeach
+                    <td>{{ $details->RegisteredInRC }}</td>
                 </tr>
                 <tr>
                     <th>Register Number</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->RegisterNumber }}</td>
-                    @endforeach
+                    <td>{{ $details->RegisterNumber }}</td>
                 </tr>
                 <tr>
                     <th>Rented Area</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->RentedArea }}</td>
-                    @endforeach
+                    <td>{{ $details->RentedArea }}</td>
                 </tr>
                 <tr>
                     <th>Referenced Company</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ReferencedCompany }}</td>
-                    @endforeach
+                    <td>{{ $details->ReferencedCompany }}</td>
                 </tr>
                 <tr>
                     <th>Given In Change</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->GivenInChange }}</td>
-                    @endforeach
+                    <td>{{ $details->GivenInChange }}</td>
                 </tr>
                 <tr>
                     <th>PlotUnderRealState</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->PlotUnderRealState }}</td>
-                    @endforeach
+                    <td>{{ $details->PlotUnderRealState }}</td>
                 </tr>
                 <tr>
                     <th>PersonalNumber</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->PersonalNumber }}</td>
-                    @endforeach
+                    <td>{{ $details->PersonalNumber }}</td>
                 </tr>
                 <tr>
                     <th>Name</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Name }}</td>
-                    @endforeach
+                    <td>{{ $details->Name }}</td>
                 </tr>
                 <tr>
                     <th>Surname</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Surname }}</td>
-                    @endforeach
+                    <td>{{ $details->Surname }}</td>
                 </tr>
                 <tr>
                     <th>Company Name</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->CompanyName }}</td>
-                    @endforeach
+                    <td>{{ $details->CompanyName }}</td>
                 </tr>
                 <tr>
                     <th>Phone</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Phone }}</td>
-                    @endforeach
+                    <td>{{ $details->Phone }}</td>
                 </tr>
                 <tr>
                     <th>Other Contact Information</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->OtherContactInformation }}</td>
-                    @endforeach
+                    <td>{{ $details->OtherContactInformation }}</td>
                 </tr>
 
                 <tr>
                     <th>Subrenter</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Subrenter }}</td>
-                    @endforeach
+                    <td>{{ $details->Subrenter }}</td>
                 </tr>
                 <tr>
                     <th>Subrent Until Date</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->SubrentTillDate }}</td>
-                    @endforeach
+                    <td>{{ $details->SubrentTillDate }}</td>
                 </tr>
                 <tr>
                     <th>Subrented Area</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->SubrentedArea }}</td>
-                    @endforeach
+                    <td>{{ $details->SubrentedArea }}</td>
                 </tr>
                 <tr>
                     <th>Subrent RC</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->SubrentRC }}</td>
-                    @endforeach
+                    <td>{{ $details->SubrentRC }}</td>
                 </tr>
                 <tr>
                     <th>Subrent RC Since</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->SubrentRCSince }}</td>
-                    @endforeach
+                    <td>{{ $details->SubrentRCSince }}</td>
                 </tr>
                 <tr>
                     <th>Owned Date</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->OwnedDate }}</td>
-                    @endforeach
+                    <td>{{ $details->OwnedDate }}</td>
                 </tr>
                 <tr>
                     <th>Price starting date (MM-DD):</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->RentStartsFrom }}</td>
-                    @endforeach
+                    <td>{{ $details->RentStartsFrom }}</td>
                 </tr>
                 <tr>
                     <th>Price ending date (MM-DD):</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->RentEndsIn }}</td>
-                    @endforeach
+                    <td>{{ $details->RentEndsIn }}</td>
                 </tr>
                 <tr>
                     <th>2nd price starting date (MM-DD):</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->NewPriceStartingDate }}</td>
-                    @endforeach
+                    <td>{{ $details->NewPriceStartingDate }}</td>
                 </tr>
                 <tr>
                     <th>2nd price until date (MM-DD):</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->NewPriceTillDate }}</td>
-                    @endforeach
+                    <td>{{ $details->NewPriceTillDate }}</td>
                 </tr>
                 <tr>
                     <th>Bank Account</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->BankAccount }}</td>
-                    @endforeach
+                    <td>{{ $details->BankAccount }}</td>
                 </tr>
                 <tr>
                     <th>ContractedBy</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ContractedBy }}</td>
-                    @endforeach
+                    <td>{{ $details->ContractedBy }}</td>
                 </tr>
                 <tr>
                     <th>First Price Per Hectare</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->fstPricePerHectare }}</td>
-                    @endforeach
+                    <td>{{ $details->fstPricePerHectare }}</td>
                 </tr>
                 <tr>
                     <th>Second Price Per Hectare</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->sndPricePerHectare }}</td>
-                    @endforeach
+                    <td>{{ $details->sndPricePerHectare }}</td>
                 </tr>
                 <tr>
                     <th>Total Payment Per First Period</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->fstPrice }}</td>
-                    @endforeach
+                    <td>{{ $details->fstPrice }}</td>
                 </tr>
                 <tr>
                     <th>Total Payment Per Second Period</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->sndPrice }}</td>
-                    @endforeach
+                    <td>{{ $details->sndPrice }}</td>
                 </tr>
                 <tr>
                     <th>Contract Sign Date</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ContractSignDate }}</td>
-                    @endforeach
+                    <td>{{ $details->ContractSignDate }}</td>
                 </tr>
                 <tr>
                     <th>Changes Date</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ChangesDate }}</td>
-                    @endforeach
+                    <td>{{ $details->ChangesDate }}</td>
                 </tr>
                 <tr>
                     <th>Contract Changes</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ContractChanges }}</td>
-                    @endforeach
+                    <td>{{ $details->ContractChanges }}</td>
                 </tr>
                 <tr>
                     <th>Interval</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Interval }}</td>
-                    @endforeach
+                    <td>{{ $details->Interval }}</td>
                 </tr>
                 <tr>
                     <th>Contract Number</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->ContractNumber }}</td>
-                    @endforeach
+                    <td>{{ $details->ContractNumber }}</td>
                 </tr>
                 <tr>
                     <th>Year</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Year }}</td>
-                    @endforeach
+                    <td>{{ $details->Year }}</td>
                 </tr>
                 <tr>
                     <th>Town</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Town }}</td>
-                    @endforeach
+                    <td>{{ $details->Town }}</td>
                 </tr>
                 <tr>
                     <th>Street</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Street }}</td>
-                    @endforeach
+                    <td>{{ $details->Street }}</td>
                 </tr>
                 <tr>
                     <th>House</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->House }}</td>
-                    @endforeach
+                    <td>{{ $details->House }}</td>
                 </tr>
                 <tr>
                     <th>Flat</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->Flat }}</td>
-                    @endforeach
+                    <td>{{ $details->Flat }}</td>
                 </tr>
                 <tr>
                     <th>Area Number</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->AreaNumber }}</td>
-                    @endforeach
+                    <td>{{ $details->AreaNumber }}</td>
                 </tr>
                 <tr>
                     <th>Location Land</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->LocationLand }}</td>
-                    @endforeach
+                    <td>{{ $details->LocationLand }}</td>
                 </tr>
                 <tr>
                     <th>Village Land</th>
-                    @foreach($details as $detail)
-                        <td>{{ $detail->VillageLand }}</td>
-                    @endforeach
+                    <td>{{ $details->VillageLand }}</td>
                 </tr>
                 <tr>
                     <td><a href="delete?id={{ $id }}" class="btn btn-info pull-left" role="button">Delete</a></td>

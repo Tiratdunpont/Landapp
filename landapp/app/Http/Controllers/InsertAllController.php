@@ -70,7 +70,7 @@ class InsertAllController extends Controller
         }
         return 0;
     }
-    public function days($smonth1, $emonth1, $sday1, $eday1, $year)
+    /*public function days($smonth1, $emonth1, $sday1, $eday1, $year)
     {
         $pay = 0;
         if ($smonth1 == 1) {
@@ -272,7 +272,7 @@ class InsertAllController extends Controller
             $pay = $eday1 - $sday1;
         }
         return $pay;
-    }
+    }*/
 
     public function store()
     {
@@ -324,7 +324,6 @@ class InsertAllController extends Controller
             'VillageLand'
         ]);
         $prices = array(0,0);
-        $year = request('Year');
         $priceh = request('fstPricePerHectare');
         $totalh = request('RentedArea');
         $sdate1 = request('RentStartsFrom');
@@ -333,7 +332,10 @@ class InsertAllController extends Controller
         $edate2 = request('NewPriceTillDate');
         $price2 = request('sndPricePerHectare');
         $price = (($priceh * $totalh)*12/365);
-        $slength1 = strlen($sdate1);
+        $edate1 = date_create($edate1);
+        $sdate1 = date_create($sdate1);
+        $days1 = date_diff($sdate1,$edate1);
+        /*$slength1 = strlen($sdate1);
         $smonthl1 = $slength1 - 2;
         $smonth1 = substr($sdate1, 0, $smonthl1 - 1);
         $smonth1 = intval($smonth1);
@@ -344,12 +346,12 @@ class InsertAllController extends Controller
         $emonth1 = substr($edate1, 0, $emonthl1 - 1);
         $emonth1 = intval($emonth1);
         $eday1 = substr($edate1, $emonthl1, $elength1);
-        $eday1 = intval($eday1);
-        $aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);
-        $prices[0] = $aux * $price;
+        $eday1 = intval($eday1);*/
+        /*$aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);*/
+        $prices[0] = $days1->days * $price;
         if (isset($sdate2) && isset($edate2) && isset($price2)) {
             $price2 = ($priceh * $totalh)*12/365;
-            $slength1 = strlen($sdate2);
+            /*$slength1 = strlen($sdate2);
             $smonthl1 = $slength1 - 2;
             $smonth1 = substr($sdate2, 0, $smonthl1 - 1);
             $sday1 = substr($sdate2, $smonthl1, $slength1);
@@ -357,8 +359,11 @@ class InsertAllController extends Controller
             $emonthl1 = $elength1 - 2;
             $emonth1 = substr($edate2, 0, $emonthl1 - 1);
             $eday1 = substr($edate2, $emonthl1, $elength1);
-            $aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);
-            $prices[1] = $aux * $price2;
+            $aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);*/
+            $sdate2 = date_create($sdate2);
+            $edate2 = date_create($edate2);
+            $days2 = date_diff($sdate2, $edate2);
+            $prices[1] = $days2->days * $price2;
         }
         $c = request('CompanyName');
         $e = request('PersonalNumber');
@@ -496,14 +501,16 @@ class InsertAllController extends Controller
             return redirect('home');
         }
         else if ($cb == 0 && $lb == 1) {
-            return Redirect::back()->withErrors(['Can\'t have a used Unique Land Number with a different Company Name', '']);
+            return redirect('home')->withErrors(['field' => 'Can\'t have a used Unique Land Number with a different Company Name']);
+            /*return Redirect::back()->withErrors(['Can\'t have a used Unique Land Number with a different Company Name', '']);*/
         }
         else if ($cb == 1 && $lb == 1 && $eb == 1) {
             $t = $this->checkT2($e, $l);
             if ($t == 1) {
                 $k = $this->checkyr($yr, $e, $l);
                 if ($k == 0) {
-                    return Redirect::back()->withErrors(['Already used Personal Number, Unique Land Number and Company Name', '']);
+                    /*return Redirect::back()->withErrors(['Already used Personal Number, Unique Land Number and Company Name', '']);*/
+                    return redirect('auth/login')->withErrors(['field' => 'Already used Personal Number, Unique Land Number and Company Name']);
                 }
                 else{
 

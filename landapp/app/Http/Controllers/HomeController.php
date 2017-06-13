@@ -24,209 +24,6 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function days($smonth1, $emonth1, $sday1, $eday1, $year)
-    {
-        $pay = 0;
-        if ($smonth1 == 1) {
-            $pay += 32 - $sday1;
-            if (($year % 4 == 0) && (($year % 100 != 0) || ($year % 400 == 0))) {
-                if ($emonth1 == 2) {
-                    $pay += 30 - $eday1;
-                } else if ($emonth1 == 3) {
-                    $pay += 30 + 31 - $eday1;
-                } else if ($emonth1 == 4) {
-                    $pay += 30 + 31 + 30 - $eday1;
-                } else if ($emonth1 == 5) {
-                    $pay += 30 + 2 * 31 + 30 - $eday1;
-                } else if ($emonth1 == 6) {
-                    $pay += 30 + 2 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 7) {
-                    $pay += 30 + 3 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 8) {
-                    $pay += 30 + 4 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 9) {
-                    $pay += 30 + 4 * 31 + 3 * 30 - $eday1;
-                } else if ($emonth1 == 10) {
-                    $pay += 30 + 5 * 31 + 3 * 30 - $eday1;
-                } else if ($emonth1 == 11) {
-                    $pay += 30 + 5 * 31 + 4 * 30 - $eday1;
-                } else if ($emonth1 == 12) {
-                    $pay += 30 + 6 * 31 + 4 * 30 - $eday1;
-                } else $pay = $eday1 - $sday1;
-            } else {
-                if ($emonth1 == 2) {
-                    $pay += 29 - $eday1;
-                } else if ($emonth1 == 3) {
-                    $pay += 29 + 31 - $eday1;
-                } else if ($emonth1 == 4) {
-                    $pay += 29 + 31 + 30 - $eday1;
-                } else if ($emonth1 == 5) {
-                    $pay += 29 + 2 * 31 + 30 - $eday1;
-                } else if ($emonth1 == 6) {
-                    $pay += 29 + 2 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 7) {
-                    $pay += 29 + 3 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 8) {
-                    $pay += 29 + 4 * 31 + 2 * 30 - $eday1;
-                } else if ($emonth1 == 9) {
-                    $pay += 29 + 4 * 31 + 3 * 30 - $eday1;
-                } else if ($emonth1 == 10) {
-                    $pay += 29 + 5 * 31 + 3 * 30 - $eday1;
-                } else if ($emonth1 == 11) {
-                    $pay += 29 + 5 * 31 + 4 * 30 - $eday1;
-                } else if ($emonth1 == 12) {
-                    $pay += 29 + 6 * 31 + 4 * 30 - $eday1;
-                } else $pay = $eday1 - $sday1;
-            }
-        } else if ($smonth1 == 2) {
-            if (($year % 4 == 0) && (($year % 100 != 0) || ($year % 400 == 0))) {
-                $pay += 30 - $sday1;
-            } else {
-                $pay += 29 - $sday1;
-            }
-            if ($emonth1 == 3) {
-                $pay += 32 - $eday1;
-            } else if ($emonth1 == 4) {
-                $pay += 32 + 30 - $eday1;
-            } else if ($emonth1 == 5) {
-                $pay += 32 + 31 + 30 - $eday1;
-            } else if ($emonth1 == 6) {
-                $pay += 32 + 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 7) {
-                $pay += 32 + 2 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 8) {
-                $pay += 32 + 3 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 32 + 3 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 32 + 4 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 32 + 4 * 31 + 3 * 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 32 + 5 * 31 + 3 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 3) {
-            $pay += 32 - $sday1;
-            if ($emonth1 == 4) {
-                $pay += 31 - $eday1;
-            } else if ($emonth1 == 5) {
-                $pay += 2 * 31 - $eday1;
-            } else if ($emonth1 == 6) {
-                $pay += 30 + 2 * 31 - $eday1;
-            } else if ($emonth1 == 7) {
-                $pay += 3 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 8) {
-                $pay += 4 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 4 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 5 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 6 * 31 + 3 * 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 7 * 31 + 3 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 4) {
-            $pay += 31 - $sday1;
-            if ($emonth1 == 5) {
-                $pay += 32 - $eday1;
-            } else if ($emonth1 == 6) {
-                $pay += 32 + 30 - $eday1;
-            } else if ($emonth1 == 7) {
-                $pay += 32 + 31 + 30 - $eday1;
-            } else if ($emonth1 == 8) {
-                $pay += 32 + 2 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 32 + 2 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 32 + 3 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 32 + 3 * 31 + 3 * 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 32 + 4 * 31 + 3 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 5) {
-            $pay += 32 - $sday1;
-            if ($emonth1 == 6) {
-                $pay += 31 - $eday1;
-            } else if ($emonth1 == 7) {
-                $pay += 2 * 31 - $eday1;
-            } else if ($emonth1 == 8) {
-                $pay += 3 * 31 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 3 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 4 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 4 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 5 * 31 + 2 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 6) {
-            $pay += 31 - $sday1;
-            if ($emonth1 == 7) {
-                $pay += 32 - $eday1;
-            } else if ($emonth1 == 8) {
-                $pay += 32 + 31 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 32 + 31 + 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 32 + 2 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 32 + 2 * 31 + 2 * 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 32 + 3 * 31 + 2 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 7) {
-            $pay += 32 - $sday1;
-            if ($emonth1 == 8) {
-                $pay += 32 - $eday1;
-            } else if ($emonth1 == 9) {
-                $pay += 32 + 30 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 32 + 30 + 31 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 32 + 2 * 30 + 31 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 32 + 2 * 31 + 2 * 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 8) {
-            $pay += 32 - $sday1;
-            if ($emonth1 == 9) {
-                $pay += 31 - $eday1;
-            } else if ($emonth1 == 10) {
-                $pay += 2 * 31 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 2 * 31 + 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 3 * 31 + 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 9) {
-            $pay += 31 - $sday1;
-            if ($emonth1 == 10) {
-                $pay += 32 - $eday1;
-            } else if ($emonth1 == 11) {
-                $pay += 32 + 30 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 32 + 31 + 30 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 10) {
-            $pay += 32 - $sday1;
-            if ($emonth1 == 11) {
-                $pay += 31 - $eday1;
-            } else if ($emonth1 == 12) {
-                $pay += 2 * 31 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 11) {
-            $pay += 31 - $sday1;
-            if ($emonth1 == 12) {
-                $pay += 32 - $eday1;
-            } else $pay = $eday1 - $sday1;
-        } else if ($smonth1 == 12) {
-            $pay = $eday1 - $sday1;
-        }
-        return $pay;
-    }
 
     public function index()
     {
@@ -279,7 +76,11 @@ class HomeController extends Controller
                     'e.Surname as Surname')
                 ->orderBy('PersonalNumber', request('PersonalNumber'))
                 ->paginate(25);
-        } else {
+        }
+/*        else if ($errors->any()){
+
+        }*/
+        else {
             $maintables = \DB::table('lands as l')
                 ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
                 ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
@@ -309,7 +110,7 @@ class HomeController extends Controller
             ->join('details as d', 'e.PersonalNumber', '=', 'd.PersonalNumber')
             ->join('contracts as con', 'con.UniqueLandNumber', '=', 'l.UniqueLandNumber')
             ->where('b.id', '=', $id)
-            ->get();
+            ->first();
         return view('details', compact('details', 'id'));
     }
 
@@ -359,7 +160,15 @@ class HomeController extends Controller
         function updateredir()
         {
             $id = request('id');
-            return view('update', compact('id'));
+            $details = \DB::table('balances as b')
+                ->join('lands as l', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
+                ->join('companies as com', 'l.CompanyName', '=', 'com.CompanyName')
+                ->join('details as d', 'e.PersonalNumber', '=', 'd.PersonalNumber')
+                ->join('contracts as con', 'con.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                ->where('b.id', '=', $id)
+                ->first();
+            return view('update', compact('id', 'details'));
         }
 
         public
@@ -432,7 +241,7 @@ class HomeController extends Controller
                         $sheet->fromArray($data);
 
                     });
-                })->export('xls');
+                })->export('xlsx');
 
 
                 return view('home', compact('maintables', 'selected'));

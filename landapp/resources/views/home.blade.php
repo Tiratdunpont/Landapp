@@ -2,7 +2,6 @@
 
 @section('content')
     @include('layouts.filter', compact($maintables))
-    {{--POSAR PREU TOTAL!!!--}}
 
     <div class="container">
         @if($errors->any())
@@ -81,8 +80,13 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="ContractSignDate">Contract sign date:</label>
+                        <label for="ContractSignDate">Contract sign date:</label>
+                        <div class="input-group date" data-provide="datepicker">
                             <input class="form-control" id="ContractSignDate" name="ContractSignDate">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
                             @if ($errors->has('ContractSignDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('ContractSignDate') }}</strong>
@@ -100,7 +104,12 @@
                         </div>
                         <div class="form-group">
                             <label for="ChangesDate">Changes date:</label>
-                            <input class="form-control" id="ChangesDate" name="ChangesDate">
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="ChangesDate" name="ChangesDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
                             @if ($errors->has('ChangesDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('ChangesDate') }}</strong>
@@ -294,8 +303,14 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="RentStartsFrom">* Price starting date (MM-DD):</label>
-                            <input class="form-control" id="RentStartsFrom" name="RentStartsFrom">
+                            <label for="RentStartsFrom">* Price starting date:</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="RentStartsFrom" name="RentStartsFrom">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+
                             @if ($errors->has('RentStartsFrom'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('RentStartsFrom') }}</strong>
@@ -303,8 +318,14 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="RentEndsIn">* Price ending date (MM-DD):</label>
-                            <input class="form-control" id="RentEndsIn" name="RentEndsIn">
+                            <label for="RentEndsIn">* Price ending date:</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="RentEndsIn" name="RentEndsIn">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+
                             @if ($errors->has('RentEndsIn'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('RentEndsIn') }}</strong>
@@ -312,8 +333,14 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="NewPriceStartingDate">2nd price starting date (MM-DD):</label>
-                            <input class="form-control" id="NewPriceStartingDate" name="NewPriceStartingDate">
+                            <label for="NewPriceStartingDate">2nd price starting date:</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="NewPriceStartingDate" name="NewPriceStartingDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+
                             @if ($errors->has('NewPriceStartingDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('NewPriceStartingDate') }}</strong>
@@ -321,8 +348,16 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="NewPriceTillDate">2nd price until date (MM-DD):</label>
-                            <input class="form-control" id="NewPriceTillDate" name="NewPriceTillDate">
+                            <label for="NewPriceTillDate">2nd price until date:</label>
+                            <div class="picker">
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="NewPriceTillDate" name="NewPriceTillDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            </div>
+
                             @if ($errors->has('NewPriceTillDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('NewPriceTillDate') }}</strong>
@@ -331,7 +366,13 @@
                         </div>
                         <div class="form-group">
                             <label for="RegisteredInRC">Registered in RC:</label>
-                            <input class="form-control" id="RegisteredInRC" name="RegisteredInRC">
+                            <div class="input-group date" data-provide="datepicker">
+                                <input class="form-control" id="RegisteredInRC" name="RegisteredInRC">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+
                             @if ($errors->has('RegisteredInRC'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('RegisteredInRC') }}</strong>
