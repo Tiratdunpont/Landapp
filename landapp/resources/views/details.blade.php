@@ -187,20 +187,16 @@
                     @endforeach
                 </tr>
                 <tr>
-                    <th>First Total Payment Per Hectare</th>
-                    <td> {{$price}} </td>
-                </tr>
-                <tr>
                     <th>Total Payment Per First Period</th>
-                    <td> {{$pay}} </td>
-                </tr>
-                <tr>
-                    <th>Second Total Payment Per Hectare</th>
-                    <td> {{$price2}} </td>
+                    @foreach($details as $detail)
+                        <td>{{ $detail->fstPrice }}</td>
+                    @endforeach
                 </tr>
                 <tr>
                     <th>Total Payment Per Second Period</th>
-                    <td> {{$pay2}} </td>
+                    @foreach($details as $detail)
+                        <td>{{ $detail->sndPrice }}</td>
+                    @endforeach
                 </tr>
                 <tr>
                     <th>Contract Sign Date</th>

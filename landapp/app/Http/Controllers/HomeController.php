@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-use App\Balance;
 use Illuminate\Support\Facades\Input;
 
 
@@ -301,66 +300,8 @@ class HomeController extends Controller
 
     public function details()
     {
+        //Calculates the total payment per period ((total hectares*price per hectare (guess it's monthly))*12/365 * number of days of the contract)
         $id = request()->id;
-        $details = \DB::table('balances as b')
-            ->join('details as d', 'b.PersonalNumber', '=', 'd.PersonalNumber')
-            ->join('contracts as con', 'con.UniqueLandNumber', '=', 'b.UniqueLandNumber')
-            ->where('b.id', '=', $id)
-            ->get();
-        $pay = 0;
-        $price = 0;
-        $price2 = 0;
-        $pay2 = 0;
-        foreach ($details as $detail) {
-            if (!isset($detail->fstPrice)) {
-                if (isset($detail->fstPricePerHectare) && isset($detail->RentedArea) && isset($detail->RentStartsFrom) && isset($detail->RentEndsIn)) {
-                    $year = $detail->Year;
-                    $priceh = $detail->fstPricePerHectare;
-                    $totalh = $detail->RentedArea;
-                    $sdate1 = $detail->RentStartsFrom;
-                    $edate1 = $detail->RentEndsIn;
-                    $price = $priceh * $totalh;
-                    $slength1 = strlen($sdate1);
-                    $smonthl1 = $slength1 - 2;
-                    $smonth1 = substr($sdate1, 0, $smonthl1 - 1);
-                    $smonth1 = intval($smonth1);
-                    $sday1 = substr($sdate1, $smonthl1, $slength1);
-                    $sday1 = intval($sday1);
-                    $elength1 = strlen($edate1);
-                    $emonthl1 = $elength1 - 2;
-                    $emonth1 = substr($edate1, 0, $emonthl1 - 1);
-                    $emonth1 = intval($emonth1);
-                    $eday1 = substr($edate1, $emonthl1, $elength1);
-                    $eday1 = intval($eday1);
-                    $aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);
-                    /*return ($aux);*/
-                    $pay = $aux * $price;
-                    if (isset($detail->sndPricePerHectare) && isset($detail->NewPriceStartingDate) && isset($detail->NewPriceTillDate)) {
-                        $sdate1 = $detail->NewPriceStartingDate;
-                        $edate1 = $detail->NewPriceTillDate;
-                        $priceh = $detail->sndPricePerHectare;
-                        $price2 = $priceh * $totalh;
-                        $slength1 = strlen($sdate1);
-                        $smonthl1 = $slength1 - 2;
-                        $smonth1 = substr($sdate1, 0, $smonthl1 - 1);
-                        $sday1 = substr($sdate1, $smonthl1, $slength1);
-                        $elength1 = strlen($edate1);
-                        $emonthl1 = $elength1 - 2;
-                        $emonth1 = substr($edate1, 0, $emonthl1 - 1);
-                        $eday1 = substr($edate1, $emonthl1, $elength1);
-                        $aux = $this->days($smonth1, $emonth1, $sday1, $eday1, $year);
-                        $pay2 = $aux * $price2;
-                    }
-                }
-                \DB::table('balances as b')
-                    ->where ('id', $id)
-                    ->update(['fstPrice' => $pay]);
-
-                \DB::table('balances as b')
-                    ->where ('id', $id)
-                    ->update(['sndPrice' => $pay2]);
-            }
-        }
         $details = \DB::table('balances as b')
             ->join('lands as l', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
             ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
@@ -369,7 +310,7 @@ class HomeController extends Controller
             ->join('contracts as con', 'con.UniqueLandNumber', '=', 'l.UniqueLandNumber')
             ->where('b.id', '=', $id)
             ->get();
-        return view('details', compact('details', 'pay', 'price', 'id', 'pay2', 'price2'));
+        return view('details', compact('details', 'id'));
     }
 
         public
@@ -459,15 +400,15 @@ class HomeController extends Controller
                         'e.Surname as Surname')
                     ->whereIn('b.id', $id)
                     ->get();
-                \Excel::create('Test1', function ($excel) use ($id) {
+                \Excel::create('Balance', function ($excel) use ($id) {
 
                     // Set the spreadsheet title, creator, and description
                     $excel->sheet('Balances', function ($sheet) use ($id) {
                         $maintables = \DB::table('lands as l')
                             ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                            ->join('contracts as c', 'c.UniqueLandNumber', '=', 'l.UniqueLandNumber')
                             ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
                             ->select('l.UniqueLandNumber as UniqueLandNumber',
-                                'b.id as id',
                                 'l.Status as Status',
                                 'l.CompanyName as CompanyName',
                                 'l.LocationLand as LocationLand',
@@ -475,7 +416,13 @@ class HomeController extends Controller
                                 'l.SoilProductivityScore as SoilProductivityScore',
                                 'e.PersonalNumber as PersonalNumber',
                                 'e.Name as Name',
-                                'e.Surname as Surname')
+                                'e.Surname as Surname',
+                                'b.fstPrice as Payment first period',
+                                'c.RentStartsFrom as Beginning of the first period',
+                                'c.RentEndsIn as Ending of the first period',
+                                'b.sndPrice as Payment second period',
+                                'c.NewPriceStartingDate as Beginning of the second period',
+                                'c.NewPriceTillDate as Ending of the second period')
                             ->whereIn('b.id', $id)
                             ->get();
                         $data = array();

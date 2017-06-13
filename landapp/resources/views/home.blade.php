@@ -267,7 +267,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="RentedArea">Rented area:</label>
+                            <label for="RentedArea">* Rented area:</label>
                             <input class="form-control" id="RentedArea" name="RentedArea">
                             @if ($errors->has('RentedArea'))
                                 <span class="help-block">
@@ -421,16 +421,17 @@
                     </span>
                             @endif
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Year">Year:</label>
-                        <input class="form-control" id="Year" name="Year">
-                        @if ($errors->has('Year'))
-                            <span class="help-block">
+                        <div class="form-group">
+                            <label for="Year">* Year:</label>
+                            <input class="form-control" id="Year" name="Year">
+                            @if ($errors->has('Year'))
+                                <span class="help-block">
                         <strong>{{ $errors->first('Year') }}</strong>
                     </span>
-                        @endif
+                            @endif
+                        </div>
                     </div>
+
                 </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Create</button>
