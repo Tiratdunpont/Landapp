@@ -63,7 +63,7 @@
                     <div name="column1" class="col-md-3">
                         <div class="form-group">
                             <label for="ReferencedCompany">Referenced company:</label>
-                            <input class="form-control" id="ReferencedName" name="ReferencedCompany">
+                            <input class="form-control" id="ReferencedName" name="ReferencedCompany" value="{{ old('ReferencedCompany') }}">
                             @if ($errors->has('ReferencedName'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('ReferencedName') }}</strong>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Status">* Status:</label>
-                            <input class="form-control" id="Status" name="Status">
+                            <input class="form-control" id="Status" name="Status" value="{{ old('Status') }}">
                             @if ($errors->has('Status'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Status') }}</strong>
@@ -82,7 +82,7 @@
                         <div class="form-group">
                         <label for="ContractSignDate">Contract sign date:</label>
                         <div class="input-group date" data-provide="datepicker">
-                            <input class="form-control" id="ContractSignDate" name="ContractSignDate">
+                            <input class="form-control" id="ContractSignDate" name="ContractSignDate" value="{{ old('ContractSignDate') }}">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="form-group">
                             <label for="ContractChanges">Contract changes:</label>
-                            <input class="form-control" id="ContractChanges" name="ContractChanges">
+                            <input class="form-control" id="ContractChanges" name="ContractChanges" value="{{ old('ContractChanges') }}">
                             @if ($errors->has('ContractChanges'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('ContractChanges') }}</strong>
@@ -105,7 +105,7 @@
                         <div class="form-group">
                             <label for="ChangesDate">Changes date:</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="ChangesDate" name="ChangesDate">
+                                <input class="form-control" id="ChangesDate" name="ChangesDate" value="{{ old('ChangesDate') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="form-group">
                             <label for="ContractNumber">Contract number:</label>
-                            <input class="form-control" id="ContractNumber" name="ContractNumber">
+                            <input class="form-control" id="ContractNumber" name="ContractNumber" value="{{ old('ChangesDate') }}">
                             @if ($errors->has('ContractNumber'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('ContractNumber') }}</strong>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Name">Name:</label>
-                            <input class="form-control" id="Name" name="Name">
+                            <input class="form-control" id="Name" name="Name" value="{{ old('Name') }}">
                             @if ($errors->has('Name'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Name') }}</strong>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Surname">Surname:</label>
-                            <input class="form-control" id="Surname" name="Surname">
+                            <input class="form-control" id="Surname" name="Surname" value="{{ old('Surname') }}">
                             @if ($errors->has('Surname'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Surname') }}</strong>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PersonalNumber">* Personal number:</label>
-                            <input class="form-control" id="PersonalNumber" name="PersonalNumber">
+                            <input class="form-control" id="PersonalNumber" name="PersonalNumber" value="{{ old('PersonalNumber') }}">
                             @if ($errors->has('PersonalNumber'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('PersonalNumber') }}</strong>
@@ -154,7 +154,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Town">Town:</label>
-                            <input class="form-control" id="Town" name="Town">
+                            <input class="form-control" id="Town" name="Town" value="{{ old('Town') }}">
                             @if ($errors->has('Town'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Town') }}</strong>
@@ -166,7 +166,7 @@
 
                         <div class="form-group">
                             <label for="Street">Street:</label>
-                            <input class="form-control" id="Street" name="Street">
+                            <input class="form-control" id="Street" name="Street" value="{{ old('Street') }}">
                             @if ($errors->has('Street'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Street') }}</strong>
@@ -175,7 +175,7 @@
                         </div>
                         <div class="form-group">
                             <label for="House">House:</label>
-                            <input class="form-control" id="House" name="House">
+                            <input class="form-control" id="House" name="House" value="{{ old('House') }}">
                             @if ($errors->has('House'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('House') }}</strong>
@@ -184,7 +184,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Flat">Flat:</label>
-                            <input class="form-control" id="Flat" name="Flat">
+                            <input class="form-control" id="Flat" name="Flat" value="{{ old('Town') }}">
                             @if ($errors->has('Flat'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Flat') }}</strong>
@@ -193,7 +193,7 @@
                         </div>
                         <div class="form-group">
                             <label for="AreaNumber">Area number:</label>
-                            <input class="form-control" id="AreaNumber" name="AreaNumber">
+                            <input class="form-control" id="AreaNumber" name="AreaNumber" value="{{ old('AreaNumber') }}">
                             @if ($errors->has('AreaNumber'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('AreaNumber') }}</strong>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Phone">Phone:</label>
-                            <input class="form-control" id="Phone" name="Phone">
+                            <input class="form-control" id="Phone" name="Phone" value="{{ old('Phone') }}">
                             @if ($errors->has('Phone'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Phone') }}</strong>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="form-group">
                             <label for="OtherContactInformation">Other contact information:</label>
-                            <input class="form-control" id="OtherContactInformation" name="OtherContactInformation">
+                            <input class="form-control" id="OtherContactInformation" name="OtherContactInformation" value="{{ old('OtherContactInformation') }}">
                             @if ($errors->has('OtherContactInformation'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('OtherContactInformation') }}</strong>
@@ -220,7 +220,7 @@
                         </div>
                         <div class="form-group">
                             <label for="BankAccount">Bank account:</label>
-                            <input class="form-control" id="BankAccount" name="BankAccount">
+                            <input class="form-control" id="BankAccount" name="BankAccount" value="{{ old('BankAccount') }}">
                             @if ($errors->has('BankAccount'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('BankAccount') }}</strong>
@@ -229,7 +229,7 @@
                         </div>
                         <div class="form-group">
                             <label for="UniqueLandNumber">* Unique land number:</label>
-                            <input class="form-control" id="UniqueLandNumber" name="UniqueLandNumber">
+                            <input class="form-control" id="UniqueLandNumber" name="UniqueLandNumber" value="{{ old('UniqueLandNumber') }}">
                             @if ($errors->has('UniqueLandNumber'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('UniqueLandNumber') }}</strong>
@@ -238,7 +238,7 @@
                         </div>
                         <div class="form-group">
                             <label for="LocationLand">Location land:</label>
-                            <input class="form-control" id="LocationLand" name="LocationLand">
+                            <input class="form-control" id="LocationLand" name="LocationLand" value="{{ old('LocationLand') }}">
                             @if ($errors->has('LocationLand'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('LocationLand') }}</strong>
@@ -247,7 +247,7 @@
                         </div>
                         <div class="form-group">
                             <label for="VillageLand">Village land:</label>
-                            <input class="form-control" id="VillageLand" name="VillageLand">
+                            <input class="form-control" id="VillageLand" name="VillageLand" value="{{ old('VillageLand') }}">
                             @if ($errors->has('VillageLand'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('VillageLand') }}</strong>
@@ -259,7 +259,7 @@
 
                         <div class="form-group">
                             <label for="SoilProductivityScore">Soil productivity score:</label>
-                            <input class="form-control" id="SoilProductivityScore" name="SoilProductivityScore">
+                            <input class="form-control" id="SoilProductivityScore" name="SoilProductivityScore" value="{{ old('SoilProductivityScore') }}">
                             @if ($errors->has('SoilProductivityScore'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('SoilProductivityScore') }}</strong>
@@ -268,7 +268,7 @@
                         </div>
                         <div class="form-group">
                             <label for="LandArea">* Land area:</label>
-                            <input class="form-control" id="LandArea" name="LandArea">
+                            <input class="form-control" id="LandArea" name="LandArea" value="{{ old('LandArea') }}">
                             @if ($errors->has('LandArea'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('LandArea') }}</strong>
@@ -277,7 +277,7 @@
                         </div>
                         <div class="form-group">
                             <label for="RentedArea">* Rented area:</label>
-                            <input class="form-control" id="RentedArea" name="RentedArea">
+                            <input class="form-control" id="RentedArea" name="RentedArea" value="{{ old('RentedArea') }}">
                             @if ($errors->has('RentedArea'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('RentedArea') }}</strong>
@@ -286,7 +286,7 @@
                         </div>
                         <div class="form-group">
                             <label for="GivenInChange">Given in change:</label>
-                            <input class="form-control" id="GivenInChange" name="GivenInChange">
+                            <input class="form-control" id="GivenInChange" name="GivenInChange" value="{{ old('GivenInChange') }}">
                             @if ($errors->has('GivenInChange'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('GivenInChange') }}</strong>
@@ -295,7 +295,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PlotUnderRealState">Plot under real state:</label>
-                            <input class="form-control" id="PlotUnderRealState" name="PlotUnderRealState">
+                            <input class="form-control" id="PlotUnderRealState" name="PlotUnderRealState" value="{{ old('PlotUnderRealState') }}">
                             @if ($errors->has('PlotUnderRealState'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('PlotUnderRealState') }}</strong>
@@ -305,7 +305,7 @@
                         <div class="form-group">
                             <label for="RentStartsFrom">* Price starting date:</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="RentStartsFrom" name="RentStartsFrom">
+                                <input class="form-control" id="RentStartsFrom" name="RentStartsFrom" value="{{ old('RentStartsFrom') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -320,7 +320,7 @@
                         <div class="form-group">
                             <label for="RentEndsIn">* Price ending date:</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="RentEndsIn" name="RentEndsIn">
+                                <input class="form-control" id="RentEndsIn" name="RentEndsIn" value="{{ old('RentEndsIn') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -335,7 +335,7 @@
                         <div class="form-group">
                             <label for="NewPriceStartingDate">2nd price starting date:</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="NewPriceStartingDate" name="NewPriceStartingDate">
+                                <input class="form-control" id="NewPriceStartingDate" name="NewPriceStartingDate" value="{{ old('NewPriceStartingDate') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -351,7 +351,7 @@
                             <label for="NewPriceTillDate">2nd price until date:</label>
                             <div class="picker">
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="NewPriceTillDate" name="NewPriceTillDate">
+                                <input class="form-control" id="NewPriceTillDate" name="NewPriceTillDate" value="{{ old('NewPriceTillDate') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -367,7 +367,7 @@
                         <div class="form-group">
                             <label for="RegisteredInRC">Registered in RC:</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input class="form-control" id="RegisteredInRC" name="RegisteredInRC">
+                                <input class="form-control" id="RegisteredInRC" name="RegisteredInRC" value="{{ old('RegisteredInRC') }}">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
@@ -383,7 +383,7 @@
                     <div name="column4" class="col-md-3">
                         <div class="form-group">
                             <label for="RegisterNumber">Register number:</label>
-                            <input class="form-control" id="RegisterNumber" name="RegisterNumber">
+                            <input class="form-control" id="RegisterNumber" name="RegisterNumber" value="{{ old('RegisterNumber') }}">
                             @if ($errors->has('RegisterNumber'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('RegisterNumber') }}</strong>
@@ -392,7 +392,7 @@
                         </div>
                         <div class="form-group">
                             <label for="fstPricePerHectare">First Price Per Hectare</label>
-                            <input class="form-control" id="fstPricePerHectare" name="fstPricePerHectare">
+                            <input class="form-control" id="fstPricePerHectare" name="fstPricePerHectare" value="{{ old('fstPricePerHectare') }}">
                             @if ($errors->has('fstPricePerHectare'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('fstPricePerHectare') }}</strong>
@@ -401,7 +401,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sndPricePerHectare">Second Price Per Hectare</label>
-                            <input class="form-control" id="sndPricePerHectare" name="sndPricePerHectare">
+                            <input class="form-control" id="sndPricePerHectare" name="sndPricePerHectare" value="{{ old('sndPricePerHectare') }}">
                             @if ($errors->has('sndPricePerHectare'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('sndPricePerHectare') }}</strong>
@@ -410,7 +410,7 @@
                         </div>
                         <div class="form-group">
                             <label for="* CompanyName">* Company Name:</label>
-                            <input class="form-control" id="CompanyName" name="CompanyName">
+                            <input class="form-control" id="CompanyName" name="CompanyName" value="{{ old('CompanyName') }}">
                             @if ($errors->has('CompanyName'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('CompanyName') }}</strong>
@@ -419,7 +419,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Subrenter">Subrenter:</label>
-                            <input class="form-control" id="Subrenter" name="Subrenter">
+                            <input class="form-control" id="Subrenter" name="Subrenter" value="{{ old('Subrenter') }}">
                             @if ($errors->has('Subrenter'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Subrenter') }}</strong>
@@ -428,7 +428,7 @@
                         </div>
                         <div class="form-group">
                             <label for="SubrentTillDate">Subrent until date:</label>
-                            <input class="form-control" id="SubrentTillDate" name="SubrentTillDate">
+                            <input class="form-control" id="SubrentTillDate" name="SubrentTillDate" value="{{ old('SubrentTillDate') }}">
                             @if ($errors->has('SubrentTillDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('SubrentTillDate') }}</strong>
@@ -437,7 +437,7 @@
                         </div>
                         <div class="form-group">
                             <label for="SubrentedArea">Subrented area:</label>
-                            <input class="form-control" id="SubrentedArea" name="SubrentedArea">
+                            <input class="form-control" id="SubrentedArea" name="SubrentedArea" value="{{ old('SubrentedArea') }}">
                             @if ($errors->has('SubrentedArea'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('SubrentedArea') }}</strong>
@@ -446,7 +446,7 @@
                         </div>
                         <div class="form-group">
                             <label for="SubrentRCSince">Subrent RC since:</label>
-                            <input class="form-control" id="SubrentRCSince" name="SubrentRCSince">
+                            <input class="form-control" id="SubrentRCSince" name="SubrentRCSince" value="{{ old('SubrentRCSince') }}">
                             @if ($errors->has('SubrentRCSince'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('SubrentRCSince') }}</strong>
@@ -455,7 +455,7 @@
                         </div>
                         <div class="form-group">
                             <label for="OwnedDate">Owned date:</label>
-                            <input class="form-control" id="OwnedDate" name="OwnedDate">
+                            <input class="form-control" id="OwnedDate" name="OwnedDate" value="{{ old('OwnedDate') }}">
                             @if ($errors->has('OwnedDate'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('OwnedDate') }}</strong>
@@ -464,7 +464,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Year">* Year:</label>
-                            <input class="form-control" id="Year" name="Year">
+                            <input class="form-control" id="Year" name="Year" value="{{ old('Year') }}">
                             @if ($errors->has('Year'))
                                 <span class="help-block">
                         <strong>{{ $errors->first('Year') }}</strong>

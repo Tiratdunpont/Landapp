@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Land;
 use App\Entity;
+use App\Balance;
 
 
 class UpdateController extends Controller
@@ -26,7 +27,7 @@ class UpdateController extends Controller
             if ($entities != null) {
                 return 1;
             }
-        } else {
+        } else if ($xb == 1) {
             $lands = \DB::table('lands')
                 ->where('UniqueLandNumber', '=', $x)
                 ->first();
@@ -36,7 +37,6 @@ class UpdateController extends Controller
         }
         return 0;
     }
-
     public function update()
     {
         $this->validate(request(), [
@@ -84,7 +84,6 @@ class UpdateController extends Controller
             'LocationLand',
             'VillageLand'
         ]);
-
         $id = request('id');
         $ids = \DB::table('balances as b')
             ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
@@ -102,7 +101,6 @@ class UpdateController extends Controller
         $bid = $ids->bid;
         $eid = $ids->eid;
         $lid = $ids->lid;
-
         $valors = array(
             '0' => request('UniqueLandNumber'),
             '1' => request('LandArea'),
@@ -391,16 +389,6 @@ class UpdateController extends Controller
             \DB::table('contracts as c')
                 ->where('id', $conid)
                 ->update(['ContractNumber' => $valors[34]]);
-        }
-        if (isset($valors[35])) {
-            \DB::table('balances as b')
-                ->where('id', $bid)
-                ->update(['Year' => $valors[35]]);
-        }
-        if (isset($valors[35])) {
-            \DB::table('balances as b')
-                ->where('id', $bid)
-                ->update(['Year' => $valors[35]]);
         }
         if (isset($valors[35])) {
             \DB::table('balances as b')

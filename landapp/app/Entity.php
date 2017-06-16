@@ -8,15 +8,15 @@ class Entity extends Model
 {
     public function details()
     {
-        return $this->hasOne(Details::class);
+        return $this->hasMany(Details::class);
     }
     public function balance()
     {
-        return $this->hasOne(Balance::class);
+        return $this->hasMany(Balance::class);
     }
 
     public function contract()
     {
-        return $this->hasOne(Contract::class);
+        return $this->hasMany(Contract::class);
     }
 }

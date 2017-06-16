@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="pull-right">
-                        <a class="text-right" href="/home">Clear filters</a>
+                        <a class="text-right" href="/home">Clear filters and searches</a>
                     </div>
                 </div>
 

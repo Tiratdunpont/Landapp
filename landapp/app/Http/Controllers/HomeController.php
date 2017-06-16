@@ -114,8 +114,7 @@ class HomeController extends Controller
         return view('details', compact('details', 'id'));
     }
 
-        public
-        function delete()
+    public function delete()
         {
             $id = request()->id;
             $all = \DB::table('balances as b')
@@ -156,8 +155,7 @@ class HomeController extends Controller
             return view('home', compact('maintables'));
         }
 
-        public
-        function updateredir()
+    public function updateredir()
         {
             $id = request('id');
             $details = \DB::table('balances as b')
@@ -171,8 +169,7 @@ class HomeController extends Controller
             return view('update', compact('id', 'details'));
         }
 
-        public
-        function selected()
+    public function selected()
         {
             $id_checked = Input::get('to_select');
             if (is_array($id_checked)) {
@@ -231,7 +228,8 @@ class HomeController extends Controller
                                 'c.RentEndsIn as Ending of the first period',
                                 'b.sndPrice as Payment second period',
                                 'c.NewPriceStartingDate as Beginning of the second period',
-                                'c.NewPriceTillDate as Ending of the second period')
+                                'c.NewPriceTillDate as Ending of the second period',
+                                'b.Year as Year')
                             ->whereIn('b.id', $id)
                             ->get();
                         $data = array();
