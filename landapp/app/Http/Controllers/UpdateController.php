@@ -356,9 +356,32 @@ class UpdateController extends Controller
                 ->update(['Type' => $valors[27]]);
         }
         if (isset($valors[28])) {
+            $prices = array(0, 0);
+            $priceh = request('fstPricePerHectare');
+            $totalh = request('RentedArea');
+            $sdate1 = request('RentStartsFrom');
+            $edate1 = request('RentEndsIn');
+            $sdate2 = request('NewPriceStartingDate');
+            $edate2 = request('NewPriceTillDate');
+            $price2 = request('sndPricePerHectare');
+            $price = (($priceh * $totalh * 12) / 365);
+            $edate1 = date_create($edate1);
+            $sdate1 = date_create($sdate1);
+            $days1 = date_diff($sdate1, $edate1);
+            $prices[0] = $days1->days * $price;
+            if (isset($sdate2) && isset($edate2) && isset($price2)) {
+                $price2 = ($priceh * $totalh) * 12 / 365;
+                $sdate2 = date_create($sdate2);
+                $edate2 = date_create($edate2);
+                $days2 = date_diff($sdate2, $edate2);
+                $prices[1] = $days2->days * $price2;
+            }
             \DB::table('contracts as c')
                 ->where('id', $conid)
                 ->update(['fstPricePerHectare' => $valors[28]]);
+            \DB::table('balances as c')
+                ->where('id', $bid)
+                ->update(['fstPrice' => $prices[0], 'sndPrice' => $prices[1]]);
         }
         if (isset($valors[29])) {
             \DB::table('contracts as c')

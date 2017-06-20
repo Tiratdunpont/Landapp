@@ -44,10 +44,10 @@
                         <td><a href="update?id={{ $maintable->id }}" class="btn btn-info" role="button">Update</a></td>
                     </tr>
                 @endforeach
-                <button type="submit" class="btn btn-link">Select checked</button>
+                <button type="submit" class="btn btn-link" name="button" value="1">Select checked</button>
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-info pull-right">Export all rows to Excel</button>
+            <button type="submit" class="btn btn-info pull-right" name="button" value="2">Export all rows to Excel</button>
         </form>
         {{ $maintables->links() }}
     </div>

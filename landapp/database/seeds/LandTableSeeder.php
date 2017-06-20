@@ -11,10 +11,12 @@ class LandTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Land::class, 500)->create()->each(function($u, $b,$c) {
-            $u->details()->save(factory(App\Details::class)->make());
-            $b->balances()->save(factory(App\Balance::class)->make());
-            $c->contracts()->save(factory(App\Contract::class)->make());
-        });
+        factory(App\Land::class, 20)->create()->each(
+            function($Land) {
+                factory(App\Details::class)->create(['UniqueLandNumber' => $Land->UniqueLandNumber]);
+                factory(App\Balance::class)->create(['UniqueLandNumber' => $Land->UniqueLandNumber]);
+                factory(App\Contract::class)->create(['UniqueLandNumber' => $Land->UniqueLandNumber]);
+            }
+        );
     }
 }

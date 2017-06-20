@@ -7,7 +7,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div id="imaginary_container">
                         <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+                            <input type="text" class="form-control" placeholder="Search UniqueLandNumber, CompanyName or PersonalNumber" name="search" id="search">
                             <span class="input-group-addon">
                             <button style=" padding: 0; border: none; background: none;"
                                     type="submit">&#128269;</button>

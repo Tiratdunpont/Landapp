@@ -171,8 +171,9 @@ class HomeController extends Controller
 
     public function selected()
         {
+            $field = request("button");
             $id_checked = Input::get('to_select');
-            if (is_array($id_checked)) {
+            if (is_array($id_checked) and $field == 1) {
                 $maintables = \DB::table('balances as b')
                     ->join('lands as l', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
                     ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
@@ -191,58 +192,61 @@ class HomeController extends Controller
                 return view('home', compact('maintables'));
             } else {
                 $id = request()->HiddenTraitor;
-                $maintables = \DB::table('lands as l')
-                    ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
-                    ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
-                    ->select('l.UniqueLandNumber as UniqueLandNumber',
-                        'b.id as id',
-                        'l.Status as Status',
-                        'l.CompanyName as CompanyName',
-                        'l.LocationLand as LocationLand',
-                        'l.LandArea as LandArea',
-                        'l.SoilProductivityScore as SoilProductivityScore',
-                        'e.PersonalNumber as PersonalNumber',
-                        'e.Name as Name',
-                        'e.Surname as Surname')
-                    ->whereIn('b.id', $id)
-                    ->get();
-                \Excel::create('Balance', function ($excel) use ($id) {
+                if (is_array($id) and $field == 2) {
+                    $maintables = \DB::table('lands as l')
+                        ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                        ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
+                        ->select('l.UniqueLandNumber as UniqueLandNumber',
+                            'b.id as id',
+                            'l.Status as Status',
+                            'l.CompanyName as CompanyName',
+                            'l.LocationLand as LocationLand',
+                            'l.LandArea as LandArea',
+                            'l.SoilProductivityScore as SoilProductivityScore',
+                            'e.PersonalNumber as PersonalNumber',
+                            'e.Name as Name',
+                            'e.Surname as Surname')
+                        ->whereIn('b.id', $id)
+                        ->get();
+                    \Excel::create('Balance', function ($excel) use ($id) {
 
-                    // Set the spreadsheet title, creator, and description
-                    $excel->sheet('Balances', function ($sheet) use ($id) {
-                        $maintables = \DB::table('lands as l')
-                            ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
-                            ->join('contracts as c', 'c.UniqueLandNumber', '=', 'l.UniqueLandNumber')
-                            ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
-                            ->select('l.UniqueLandNumber as UniqueLandNumber',
-                                'l.Status as Status',
-                                'l.CompanyName as CompanyName',
-                                'l.LocationLand as LocationLand',
-                                'l.LandArea as LandArea',
-                                'l.SoilProductivityScore as SoilProductivityScore',
-                                'e.PersonalNumber as PersonalNumber',
-                                'e.Name as Name',
-                                'e.Surname as Surname',
-                                'b.fstPrice as Payment first period',
-                                'c.RentStartsFrom as Beginning of the first period',
-                                'c.RentEndsIn as Ending of the first period',
-                                'b.sndPrice as Payment second period',
-                                'c.NewPriceStartingDate as Beginning of the second period',
-                                'c.NewPriceTillDate as Ending of the second period',
-                                'b.Year as Year')
-                            ->whereIn('b.id', $id)
-                            ->get();
-                        $data = array();
-                        foreach ($maintables as $maintable) {
-                            $data[] = (array)$maintable;
-                        }
-                        $sheet->fromArray($data);
+                        // Set the spreadsheet title, creator, and description
+                        $excel->sheet('Balances', function ($sheet) use ($id) {
+                            $maintables = \DB::table('lands as l')
+                                ->join('balances as b', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                                ->join('contracts as c', 'c.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+                                ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
+                                ->select('l.UniqueLandNumber as UniqueLandNumber',
+                                    'l.Status as Status',
+                                    'l.CompanyName as CompanyName',
+                                    'l.LocationLand as LocationLand',
+                                    'l.LandArea as LandArea',
+                                    'l.SoilProductivityScore as SoilProductivityScore',
+                                    'e.PersonalNumber as PersonalNumber',
+                                    'e.Name as Name',
+                                    'e.Surname as Surname',
+                                    'b.fstPrice as Payment first period',
+                                    'c.RentStartsFrom as Beginning of the first period',
+                                    'c.RentEndsIn as Ending of the first period',
+                                    'b.sndPrice as Payment second period',
+                                    'c.NewPriceStartingDate as Beginning of the second period',
+                                    'c.NewPriceTillDate as Ending of the second period',
+                                    'b.Year as Year')
+                                ->whereIn('b.id', $id)
+                                ->get();
+                            $data = array();
+                            foreach ($maintables as $maintable) {
+                                $data[] = (array)$maintable;
+                            }
+                            $sheet->fromArray($data);
 
-                    });
-                })->export('xlsx');
+                        });
+                    })->export('xlsx');
 
 
-                return view('home', compact('maintables', 'selected'));
+                    return view('home', compact('maintables', 'selected'));
+                }
+                return redirect('home');
             }
         }
     }
