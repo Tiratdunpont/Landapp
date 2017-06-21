@@ -203,12 +203,14 @@ class HomeController extends Controller
                     'e.Name as Name',
                     'e.Surname as Surname')
                 ->get();
-            return view('basket', compact('maintables'));
+            return view('selected', compact('maintables'));
         }
     }
     public function excel(){
+        $field = request("button");
         $id = request()->HiddenTraitor;
-        if (is_array($id)) {
+        $id_checked = request()->to_select;
+        if (is_array($id) and !is_array($id_checked) and $field == 0) {
             \Excel::create('Balance', function ($excel) use ($id) {
                 // Set the spreadsheet title, creator, and description
                 $excel->sheet('Balances', function ($sheet) use ($id) {
@@ -242,17 +244,42 @@ class HomeController extends Controller
 
                 });
             })->export('xlsx');
-            $history = "";
-            $baskets = \DB::table('basket as b')->get();
-            foreach ($baskets as $basket){
-                $history += $basket." ";
-            }
-            $basketh = new Baskethistory();
-            $basketh->balid = $history;
-            $basketh->save();
-            basket::truncate();
         }
-        return redirect('home');
+        else if ($field == 1 and is_array($id_checked)){
+            \DB::table('baskets')
+                ->whereIn('balid', $id_checked)
+                ->delete();
+        }
+        $maintables = \DB::table('balances as b')
+            ->join('lands as l', 'b.UniqueLandNumber', '=', 'l.UniqueLandNumber')
+            ->join('entities as e', 'e.PersonalNumber', '=', 'b.PersonalNumber')
+            ->join('baskets as bk', 'bk.balid', '=', 'b.id')
+            ->select('l.UniqueLandNumber as UniqueLandNumber',
+                'b.id as id',
+                'l.Status as Status',
+                'l.CompanyName as CompanyName',
+                'l.LocationLand as LocationLand',
+                'l.LandArea as LandArea',
+                'l.SoilProductivityScore as SoilProductivityScore',
+                'e.PersonalNumber as PersonalNumber',
+                'e.Name as Name',
+                'e.Surname as Surname')
+            ->get();
+        return view('selected', compact('maintables'));
 
+    }
+    public function eraseall(){
+        \DB::table('baskets')->delete();
+        return redirect('home');
+    }
+    public function savehistory(){
+        $history = "";
+        $baskets = \DB::table('baskets as b')->get();
+        foreach ($baskets as $basket){
+            $history .= $basket->balid." ";
+        }
+        $basketh = new Baskethistory();
+        $basketh->ids = $history;
+        $basketh->save();
     }
 }

@@ -24,6 +24,7 @@
                 @foreach($maintables as $maintable)
                     <tr>
                         <td>
+                            <input type="checkbox" id="checkbox" name="to_select[]" value="{{ $maintable->id }}"/>
                             <input type="hidden" id="HiddenElement" name="HiddenTraitor[]"
                                    value="{{ $maintable->id }}"/>
                         </td>
@@ -41,7 +42,10 @@
                 @endforeach
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-info pull-right" name="button">Export Excel</button>
+            <button type="submit" class="btn btn-info pull-right" name="button" value="0">Export Excel</button>
+            <button type="submit" class="btn btn-info" name="button" value ="1">Erase selected from search</button>
         </form>
+            <a href="eraseall" class="btn btn-info" role="button">Erase all the search</a>
+            <a href="save" class="btn btn-info pull-right" role="button">Save search</a>
     </div>
 @endsection

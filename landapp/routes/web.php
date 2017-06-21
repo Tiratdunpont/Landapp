@@ -26,3 +26,5 @@ Route::post('InsertAll', 'InsertAllController@store');
 Route::get('details', 'HomeController@details');
 Route::get('delete', 'HomeController@delete');
 Route::post('excel', 'HomeController@excel');
+Route::get('eraseall', 'HomeController@eraseall');
+Route::get('save', 'HomeController@savehistory');
